@@ -214,10 +214,6 @@ gap: 1rem;
 font-size: 1rem;
 }
 
-/*#projects li{
-margin: 1rem;
-}*/
-
 #projects img{
 margin: 2rem 0 4rem 0;
 border-left: 1px solid var(--aqua);
@@ -226,23 +222,50 @@ border-radius: 25px;
 padding: 1rem;
 }
 
-@media (min-width: 550px){
+@media (min-width: 800px){
     /*Solo son efectivos o aplican cuando window is at least 550 pixeles wide (ancho)*/
-article{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem; /*space between text and image*/
-}
+  article{
+    display:grid;
+    /*grid-template-columns: 1fr 1fr;  grid with 2 columns*/
+    grid-template-columns: repeat(10, 1fr);  /*We have a 10 columns*/
+    gap: 1rem; /*space between text and image*/
+  }
 
-.text{
- order: 2; /*by default the image doesn;t have an order property assigned to it, so order:2 just flips those right over*/
-  text-align: right;
-}
+  #projects{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-#projects ul{
-  justify-content:flex-end;
-}
+  #projects img{
+    grid-column: 1/6; /*To overlap (sobreponer) the image and the text*/
+    grid-row: 1/2; /*overlap image and text in the same row*/
+  }
 
+  .text {
+      grid-column: 5/11;
+      grid-row: 1/2; /*overlap image and text in the same row*/
+      order: 2; /*by default the image doesn;t have an order property assigned to it, so order:2 just flips those right over*/
+    text-align: right;
+  }
+
+  #projects ul{
+    justify-content:flex-end; /*add the text of the end when Flex finish (right side)*/
+  }
+
+  #projects .reverse .text {
+    grid-column: 1/7;
+    order: 2;
+    text-align: left;
+  }
+
+  #projects .reverse img{
+    grid-column: 6/11;
+    grid-row: 1/2;
+  }
+
+  #projects .reverse ul{
+    justify-content: flex-start;
+  }
 }
 
 /*Responsibe design*/
